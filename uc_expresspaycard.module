@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Integrates fondy redirected payment service.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function uc_expresspaycard_help($route_name, RouteMatchInterface $route_match) {
+	// Provide information and instructions on the payment method add and edit forms.
+	if ($route_name == 'entity.uc_payment_method.add_form' &&
+	    $route_match->getRawParameter('plugin_id') == 'expresspaycard') {
+		return '<p>«Экспресс Платежи» - плагин для интеграции с сервисом «Экспресс Платежи» (express-pay.by) через API. Плагин позволяет выставить счет в системе ЕРИП, получить и обработать уведомление о платеже в системе ЕРИП, выставлять счета для оплаты банковскими картами, получать и обрабатывать уведомления о платеже по банковской карте. Описание плагина доступно по адресу: <a target="blank" href="https://express-pay.by/cms-extensions/wordpress">https://express-pay.by/cms-extensions/wordpress</a></p>';
+	}
+	elseif ($route_name == 'entity.uc_payment_method.edit_form' &&
+	        $route_match->getParameter('uc_payment_method')->getPlugin()->getPluginId() == 'expresspaycard') {
+				return '<p>«Экспресс Платежи» - плагин для интеграции с сервисом «Экспресс Платежи» (express-pay.by) через API. Плагин позволяет выставить счет в системе ЕРИП, получить и обработать уведомление о платеже в системе ЕРИП, выставлять счета для оплаты банковскими картами, получать и обрабатывать уведомления о платеже по банковской карте. Описание плагина доступно по адресу: <a target="blank" href="https://express-pay.by/cms-extensions/wordpress">https://express-pay.by/cms-extensions/wordpress</a></p>';
+	}
+}
+
+/**
+ * Implements hook_ucga_display().
+ */
+function uc_expresspaycard_ucga_display() {
+
+	if (arg(0) == 'cart' && arg(1) == 'expresspaycard' && arg(2) == 'complete') {
+		return TRUE;
+	}
+}

@@ -1,0 +1,23 @@
+uc_expresspaycard.complete:
+  path: "/cart/expresspaycard/complete"
+  defaults:
+    _controller: '\Drupal\uc_expresspaycard\Controller\ExpresspayCardController::complete'
+    _title: "Order complete"
+  requirements:
+    _permission: "access content"
+
+uc_expresspaycard.notification:
+  path: "/cart/expresspaycard/notification"
+  defaults:
+    _controller: '\Drupal\uc_expresspaycard\Controller\ExpresspayCardController::notification'
+    _title: "Notification callback"
+  requirements:
+    _permission: "access content"
+
+uc_expresspaycard.cancel:
+  path: "/cart/expresspaycard/cancel"
+  defaults:
+    _controller: '\Drupal\uc_expresspaycard\Controller\ExpresspayCardController::cancel'
+    _title: "Order cancel"
+  requirements:
+    _permission: "access content"
